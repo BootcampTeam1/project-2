@@ -1,37 +1,55 @@
-<!DOCTYPE html>
+<!DOCTYPE <!DOCTYPE html>
 <html>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<head>
+    <meta charset="utf-8" />
+    <title>Budgeter</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="budgetApp/public/styles/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 
 <body>
 
-    <canvas id="doughnut-chart" width="800" height="300">
+    <div id="container">
+        <div class="row1">
+            <div class="col-md">
+                <h1><i class="fa fa-bank"></i> Budgeter</h1>
+            </div>
+        </div>
+        <div class="row2">
+            <div class="col-md">
+                <canvas id="doughnut-chart" width="980" height="300"></canvas>
+            </div>
+        </div>
+    </div>
 
-        <script>
-
+    <script>
         new Chart(document.getElementById("doughnut-chart"), {
             type: 'doughnut',
             data: {
-              labels: ["Entertainment", "Dining", "Groceries", "Rent & Utilities", "Transportation"],
-              datasets: [
-                {
-                  label: "Spend (Dollars)",
-                  backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-                  data: [250,650,500,950,230]
-                }
-              ]
+                labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+                datasets: [
+                    {
+                        label: "Population (millions)",
+                        backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                        data: [2478, 5267, 734, 784, 433]
+                    }
+                ]
             },
             options: {
-              title: {
-                display: true,
-                text: 'Budget for August, 2018'
-              }
+                title: {
+                    display: true,
+                    text: 'Predicted world population (millions) in 2050'
+                }
             }
         });
+    </script>
 
-        </script>
-
-    </canvas>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </body>
 

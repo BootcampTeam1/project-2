@@ -1,3 +1,9 @@
 .list-group-item {
-  line-height: 2.5;
+    line-height: 2.5;
+}
+
+.row1 {
+    font-family: 'Lobster', cursive;
+    font-size: 48px;
+    text-align: center;
 }
