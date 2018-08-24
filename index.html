@@ -19,17 +19,17 @@
             <div class="col-sm-4" id="titleView">
                 <h1><i class="fa fa-bank"></i> Budgeter</h1>
             </div>
-            <div class="col-sm-4" id="dateView">
-                <h1>Aug, 2018</h1>
+            <div class="col-sm-4" id="expenseView">
+                <h1>Expenses</h1>
             </div>
             <div class="col-sm-4" id="categoryView">
-                <h1>Category View</h1>
+                <h1 href="#">Category View</h1>
             </div>
         </div>
 
         <div class="row2">
             <div class="col-md">
-                <canvas id="budget-chart" width="980" height="300"></canvas>
+                <canvas id="budget-chart" width="900" height="300"></canvas>
             </div>
         </div>
     </div>
@@ -51,14 +51,21 @@
             options: {
                 response: true,
                 title: {
-                    display: true
+                    text: "August 2018",
+                    display: true,
+                    fontSize: 26,
+                    fontFamily: "Lobster",
+                    fontColor: "black",
+                    padding: 30
                 },
                 legend: {
                     display: true,
                     position: "bottom",
                     labels: {
-                        fontSize: 14,
+                        fontSize: 16,
                         boxWidth: 20,
+                        fontFamily: "Lobster",
+                        padding: 30
                     }
                 },
                 tooltips: {

@@ -14,17 +14,13 @@
     padding-left: 3%;
 }
 
-#dateView {
-    text-align: center;
+#expenseView {
+    text-align: center
 }
 
 #categoryView {
     text-align: right;
     padding-right: 3%;
-}
-
-Chart.data.datasets.label {
-    font-size: 45px;
 }
 
 
