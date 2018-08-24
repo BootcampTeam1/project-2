@@ -1,4 +1,4 @@
-<!DOCTYPE <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -15,35 +15,65 @@
 <body>
 
     <div id="container">
-        <div class="row1">
-            <div class="col-md">
-                <h1><i class="fa fa-bank"></i> Budgeter</h1>
+        <div class="row">
+            <div class="col-sm-4" id="titleView">
+                <h1>
+                    <i class="fa fa-bank"></i> Budgeter</h1>
+            </div>
+            <div class="col-sm-4" id="dateView">
+                <h1>Aug, 2018</h1>
+            </div>
+            <div class="col-sm-4" id="categoryView">
+                <h1>Category View</h1>
             </div>
         </div>
+
         <div class="row2">
             <div class="col-md">
-                <canvas id="doughnut-chart" width="980" height="300"></canvas>
+                <canvas id="budget-chart" width="980" height="300"></canvas>
             </div>
         </div>
     </div>
 
     <script>
-        new Chart(document.getElementById("doughnut-chart"), {
+
+        new Chart(document.getElementById("budget-chart"), {
             type: 'doughnut',
             data: {
-                labels: ["Rent", "Utilities", "Food/Groceries", "Entertainment", "Insurance/Medical"],
+                labels: ["Rent: $1,250", "Utilities: $300", "Food/Groceries: $865", "Entertainment: $670", "Insurance/Medical: $430"],
                 datasets: [
                     {
                         label: "Budget (Dollars)",
                         backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
-                        data: [2478, 300, 734, 600, 350]
+                        data: [1250, 300, 865, 670, 430]
                     }
-                ]
+                ],
             },
             options: {
+                response: true,
                 title: {
+                    display: true
+                },
+                legend: {
                     display: true,
-                    text: 'August, 2018'
+                    position: "bottom",
+                    labels: {
+                        fontSize: 14,
+                        boxWidth: 20,
+                    }
+                },
+                tooltips: {
+                    callbacks: {
+                        label: function (tooltipItem, data) {
+                            var dataset = data.datasets[tooltipItem.datasetIndex];
+                            var total = dataset.data.reduce(function (previousValue, currentValue, currentIndex, array) {
+                                return previousValue + currentValue;
+                            });
+                            var currentValue = dataset.data[tooltipItem.index];
+                            var percentage = Math.floor(((currentValue / total) * 100) + 0.5);
+                            return percentage + "%";
+                        }
+                    } 
                 }
             }
         });
