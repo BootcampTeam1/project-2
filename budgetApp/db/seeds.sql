@@ -1,0 +1,1 @@
+INSERT INTO budgets (user_login, user_name, total_balance, rent, utilities, food_groceries, entertainment, insurance_medical) values ("somebody1234", "Somebody Special", 3500.56, 950.00, 120.43, 320.76, 250.00, 200.00 );
