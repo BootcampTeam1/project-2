@@ -54,9 +54,10 @@ router.get("/logout", (req, res) => {
 // NOTE: ROUTES FOR USERS BUDGET'S - CREATE/READ/UPDATE/DELETE
 // THESE ROUTES ARE LOCKED DOWN! - THIS MEANS:
 // ALL USERS NOT LOGGED IN WILL BE REDIRECTED TO LOG IN PAGE.
+// For testing purposes, remove the 2nd param "isAuthenticated"
 // --------------------------------------------------------------------------
 // GET route for getting all of the total budget
-app.get("/members/budgets", isAuthenticated, (req, res) => {
+router.get("/members/budgets", isAuthenticated, (req, res) => {
   db.Budget.findAll({
     where: {
       id: req.user.id
@@ -65,14 +66,14 @@ app.get("/members/budgets", isAuthenticated, (req, res) => {
 });
 
 // POST route for saving a new budget
-app.post("/members/budgets", isAuthenticated, (req, res) => {
+router.post("/members/budgets", isAuthenticated, (req, res) => {
   db.Budget.create(req.body).then((dbBudget) => {
     res.json(dbBudget);
   });
 });
 
 // DELETE route for deleting specific budgets by id
-app.delete("/members/budgets/:id", isAuthenticated, (req, res) => {
+router.delete("/members/budgets/:id", isAuthenticated, (req, res) => {
   db.Budget.destroy({
     where: {
       id: req.params.id
@@ -83,7 +84,7 @@ app.delete("/members/budgets/:id", isAuthenticated, (req, res) => {
 });
 
 // PUT route for updating specific budgets by id
-app.put("/members/budgets/:id", isAuthenticated, (req, res) => {
+router.put("/members/budgets/:id", isAuthenticated, (req, res) => {
   db.Budget.update(
     req.body,
     {

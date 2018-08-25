@@ -28,8 +28,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Router -----------------------------------------------------
-const htmlRoutes = require("./routes/html-routes.js");
-const apiRoutes = require("./routes/api-routes.js");
+const htmlRoutes = require("./routes/htmlRoutes.js");
+const apiRoutes = require("./routes/apiRoutes.js");
 
 app.use(htmlRoutes);
 app.use(apiRoutes);
