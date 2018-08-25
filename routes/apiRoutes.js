@@ -31,7 +31,7 @@ router.post("/api/signup", (req, res) => {
 });
 
 // GET "/api/user_data" - for getting some data about our user to be used client side
-router.get("/api/user_data", (req, res) => {
+router.get("/members/api/user_data", (req, res) => {
   if (!req.user) {
     res.json({});
   }

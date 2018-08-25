@@ -6,29 +6,19 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: 0,
       allowNull: true
     },
-    rent: {
+    amount_spent: {
       type: DataTypes.DECIMAL,
       defaultValue: 0,
       allowNull: true
     },
-    utilities: {
+    monthly_goal: {
       type: DataTypes.DECIMAL,
       defaultValue: 0,
       allowNull: true
     },
-    groceries: {
-      type: DataTypes.DECIMAL,
-      defaultValue: 0,
-      allowNull: true
-    },
-    entertainment: {
-      type: DataTypes.DECIMAL,
-      defaultValue: 0,
-      allowNull: true
-    },
-    medical: {
-      type: DataTypes.DECIMAL,
-      defaultValue: 0,
+    name: {
+      type: DataTypes.STRING,
+      defaultValue: 'Name of Expense',
       allowNull: true
     }
   });
