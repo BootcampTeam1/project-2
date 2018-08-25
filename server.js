@@ -1,48 +1,43 @@
-require("dotenv").config();
-var express = require("express");
-var bodyParser = require("body-parser");
-var exphbs = require("express-handlebars");
+// Dependencies ------------------------------------------------
+const express = require("express");
+const bodyParser = require("body-parser");
+const session = require("express-session");
+const passport = require("./config/passport");
+const db = require("./models");
 
-var db = require("./models");
+// PORT and Express --------------------------------------------
+const PORT = process.env.PORT || 8080;
+const app = express();
 
-var app = express();
-var PORT = process.env.PORT || 3000;
+// Middleware --------------------------------------------------
 
-// Middleware
+// bodyParser
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
 
-// Handlebars
-app.engine(
-  "handlebars",
-  exphbs({
-    defaultLayout: "main"
-  })
-);
-app.set("view engine", "handlebars");
+// Express-Session
+app.use(session({
+   secret: "do or do not, there is no try",
+   resave: true,
+   saveUninitialized: true
+}));
 
-// Routes
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
+// Passport
+app.use(passport.initialize());
+app.use(passport.session());
 
-var syncOptions = { force: false };
+// Router -----------------------------------------------------
+const htmlRoutes = require("./routes/html-routes.js");
+const apiRoutes = require("./routes/api-routes.js");
 
-// If running a test, set syncOptions.force to true
-// clearing the `testdb`
-if (process.env.NODE_ENV === "test") {
-  syncOptions.force = true;
-}
+app.use(htmlRoutes);
+app.use(apiRoutes);
 
-// Starting the server, syncing our models ------------------------------------/
-db.sequelize.sync(syncOptions).then(function() {
-  app.listen(PORT, function() {
-    console.log(
-      "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
-      PORT,
-      PORT
-    );
+// Listener ---------------------------------------------------
+db.sequelize.sync().then(() => {
+  app.listen(PORT, (err) => {
+    if (err) throw err;
+    console.log(`Connected on localhost:${PORT}`);
   });
 });
-
-module.exports = app;

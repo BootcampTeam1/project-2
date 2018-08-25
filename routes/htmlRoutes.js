@@ -1,27 +1,32 @@
-var db = require("../models");
+// Dependencies -------------------------------------------------
+const path = require("path");
+const express = require("express");
+const router = express.Router();
+const isAuthenticated = require("../config/middleware/isAuthenticated");
 
-module.exports = function(app) {
-  // Load index page
-  app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.render("index", {
-        msg: "Welcome!",
-        examples: dbExamples
-      });
-    });
-  });
+// Routes --------------------------------------------------------
 
-  // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.render("example", {
-        example: dbExample
-      });
-    });
-  });
+// GET "/" - If the user already has an account send them to the members page
+router.get("/", (req, res) => {
+  if (req.user) {
+    res.redirect("/members");
+  }
+  res.sendFile(path.join(__dirname, "../public/signup.html"));
+});
 
-  // Render 404 page for any unmatched routes
-  app.get("*", function(req, res) {
-    res.render("404");
-  });
-};
+// GET "/login" - If the user already has an account send them to the members page
+router.get("/login", (req, res) => {
+
+  if (req.user) {
+    res.redirect("/members");
+  }
+  res.sendFile(path.join(__dirname, "../public/login.html"));
+});
+
+// GET "/members" - authenticated route - logged in users only
+// add this middleware for any route that shouldnt be accessible to public
+router.get("/members", isAuthenticated, (req, res) => {
+  res.sendFile(path.join(__dirname, "../public/members.html"));
+});
+
+module.exports = router;
