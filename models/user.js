@@ -19,6 +19,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
+  User.associate = (models) => {
+    // Associating User with Budgets
+    // When an User is deleted, also delete any associated Budgets
+    User.hasMany(models.Budget, {
+      onDelete: "cascade"
+    });
+  };
+
   // Using .prototype on the "User" object to add a method, checks if password matches hashed password.
   // DO NOT USE ES6 SYNTAX ON bcrypt - 'this' does not work the same in arrow functions
   User.prototype.validPassword = function(password) {

@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "root",
-    "database": "exampledb",
+    "database": "budget_app",
     "host": "localhost",
     "dialect": "mysql"
   },
