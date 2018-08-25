@@ -3,6 +3,7 @@ const db = require("../models");
 const passport = require("../config/passport");
 const express = require("express");
 const router = express.Router();
+const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 // Routes ------------------------------------------------------
 
@@ -30,8 +31,8 @@ router.post("/api/signup", (req, res) => {
   });
 });
 
-// GET "/api/user_data" - for getting some data about our user to be used client side
-router.get("/members/api/user_data", (req, res) => {
+// GET "/members/api/user_data" - for getting some data about our user to be used client side
+router.get("/api/user_data", (req, res) => {
   if (!req.user) {
     res.json({});
   }
@@ -55,7 +56,7 @@ router.get("/logout", (req, res) => {
 // ALL USERS NOT LOGGED IN WILL BE REDIRECTED TO LOG IN PAGE.
 // --------------------------------------------------------------------------
 // GET route for getting all of the total budget
-app.get("members/api/budgets", passport.authenticate("local"), (req, res) => {
+app.get("/members/budgets", isAuthenticated, (req, res) => {
   db.Budget.findAll({
     where: {
       id: req.user.id
@@ -64,14 +65,14 @@ app.get("members/api/budgets", passport.authenticate("local"), (req, res) => {
 });
 
 // POST route for saving a new budget
-app.post("members/api/budgets", passport.authenticate("local"), (req, res) => {
+app.post("/members/budgets", isAuthenticated, (req, res) => {
   db.Budget.create(req.body).then((dbBudget) => {
     res.json(dbBudget);
   });
 });
 
 // DELETE route for deleting specific budgets by id
-app.delete("members/api/budgets/:id", passport.authenticate("local"), (req, res) => {
+app.delete("/members/budgets/:id", isAuthenticated, (req, res) => {
   db.Budget.destroy({
     where: {
       id: req.params.id
@@ -82,7 +83,7 @@ app.delete("members/api/budgets/:id", passport.authenticate("local"), (req, res)
 });
 
 // PUT route for updating specific budgets by id
-app.put("members/api/budgets/:id", passport.authenticate("local"), (req, res) => {
+app.put("/members/budgets/:id", isAuthenticated, (req, res) => {
   db.Budget.update(
     req.body,
     {
