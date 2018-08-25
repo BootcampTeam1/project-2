@@ -21,6 +21,34 @@
 #categoryView {
     text-align: right;
     padding-right: 3%;
+    color: black;
+}
+
+a {
+    color: black;
+}
+
+.row2 {
+    font-family: "Lobster", cursive;
+}
+
+.card {
+    margin: 0 auto; 
+    float: none;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.btn {
+    font-size: 30px;
+    color: black;
+}
+
+#accordionView {
+    width: 20rem;
+    margin: 0 auto;
+    float: none;
+    margin-bottom: 10px;
 }
 
 
