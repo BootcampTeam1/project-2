@@ -25,7 +25,9 @@ CREATE TABLE IF NOT EXISTS Budgets (
     medical DECIMAL(10,2) DEFAULT 0,
     createdAt DATETIME NOT NULL,
     updatedAt DATETIME NOT NULL,
-    FOREIGN KEY (Users_id)
-        REFERENCES Users(id)
+    UserId INTEGER,
+    PRIMARY KEY ('id'),
+    FOREIGN KEY (UserId)
+        REFERENCES Users (id)
         ON DELETE CASCADE
 );
