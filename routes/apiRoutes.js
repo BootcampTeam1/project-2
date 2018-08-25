@@ -6,8 +6,11 @@ const router = express.Router();
 
 // Routes ------------------------------------------------------
 
+// -----------------------------------------------------------------------------------
+// NOTE: ROUTES FOR USER LOGIN/LOGOUT/SIGNUP/USERDATA --------------------------------
 // POST "/api/login" - passport.authenticate middleware with our local strategy
 // if credentials valid, login successful. otherwise, error.
+// -----------------------------------------------------------------------------------
 router.post("/api/login", passport.authenticate("local"), (req, res) => {
   res.json("/members");
 });
@@ -45,5 +48,53 @@ router.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/");
 });
+
+// --------------------------------------------------------------------------
+// NOTE: ROUTES FOR USERS BUDGET'S - CREATE/READ/UPDATE/DELETE
+// THESE ROUTES ARE LOCKED DOWN! - THIS MEANS:
+// ALL USERS NOT LOGGED IN WILL BE REDIRECTED TO LOG IN PAGE.
+// --------------------------------------------------------------------------
+// GET route for getting all of the total budget
+app.get("members/api/budgets", passport.authenticate("local"), (req, res) => {
+  db.Budget.findAll({
+    where: {
+      id: req.user.id
+    }
+  });
+});
+
+// POST route for saving a new budget
+app.post("members/api/budgets", passport.authenticate("local"), (req, res) => {
+  db.Budget.create(req.body).then((dbBudget) => {
+    res.json(dbBudget);
+  });
+});
+
+// DELETE route for deleting specific budgets by id
+app.delete("members/api/budgets/:id", passport.authenticate("local"), (req, res) => {
+  db.Budget.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then((dbBudget) => {
+    res.json(dbBudget);
+  });
+});
+
+// PUT route for updating specific budgets by id
+app.put("members/api/budgets/:id", passport.authenticate("local"), (req, res) => {
+  db.Budget.update(
+    req.body,
+    {
+      where: {
+        id: req.body.id
+      }
+    }).then((dbBudget) => {
+    res.json(dbBudget);
+  });
+});
+
+// ------------------------------------------------------------------
+// Exports ----------------------
 
 module.exports = router;
