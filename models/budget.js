@@ -16,6 +16,11 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: 0,
       allowNull: true
     },
+    month: {
+      type: DataTypes.STRING,
+      defaultValue: 'Month/Year',
+      allowNull: true
+    },
     name: {
       type: DataTypes.STRING,
       defaultValue: 'Name of Expense',

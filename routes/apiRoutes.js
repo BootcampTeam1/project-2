@@ -57,7 +57,7 @@ router.get("/logout", (req, res) => {
 // For testing purposes, remove the 2nd param "isAuthenticated"
 // --------------------------------------------------------------------------
 // GET route for getting all of the total budget
-router.get("/members/budgets", isAuthenticated, (req, res) => {
+router.get("/api/budgets", isAuthenticated, (req, res) => {
   db.Budget.findAll({
     where: {
       id: req.user.id
@@ -66,14 +66,14 @@ router.get("/members/budgets", isAuthenticated, (req, res) => {
 });
 
 // POST route for saving a new budget
-router.post("/members/budgets", isAuthenticated, (req, res) => {
+router.post("/api/budgets", isAuthenticated, (req, res) => {
   db.Budget.create(req.body).then((dbBudget) => {
     res.json(dbBudget);
   });
 });
 
 // DELETE route for deleting specific budgets by id
-router.delete("/members/budgets/:id", isAuthenticated, (req, res) => {
+router.delete("/api/budgets/:id", isAuthenticated, (req, res) => {
   db.Budget.destroy({
     where: {
       id: req.params.id
@@ -84,7 +84,7 @@ router.delete("/members/budgets/:id", isAuthenticated, (req, res) => {
 });
 
 // PUT route for updating specific budgets by id
-router.put("/members/budgets/:id", isAuthenticated, (req, res) => {
+router.put("/api/budgets/:id", isAuthenticated, (req, res) => {
   db.Budget.update(
     req.body,
     {
