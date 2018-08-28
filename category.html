@@ -31,21 +31,28 @@
                 <h3><strong>August, 2018</strong></h3>
                 <h2><strong>$3,515</strong></h2>
                 <div class="accordion" id="accordionView">
-                    <div class="card">
+                    <div class="card" id="cardOne">
                         <div class="card-header" id="headingOne">
                             <h5 class="mb-0">
-                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    <i class="fa fa-building"></i> Rent
+                                <button id="category-button" class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                     Rent
                                 </button>
                             </h5>
                         </div>
-                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionView">
+
+                        <!-- <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionView">
                             <div class="card-body">
                                 $1,250
                             </div>
-                        </div>
+                        </div> -->
                     </div>
-                    <div class="card">
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionView">
+                            <div id= "number" class="card-body">
+                                $1,250
+                            </div>
+                        </div>
+                    <!-- <div class="card">
                         <div class="card-header" id="headingTwo">
                             <h5 class="mb-0">
                                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -100,8 +107,8 @@
                                 $430
                             </div>
                         </div>
-                    </div>
-                    <div class="card">
+                    </div> -->
+                    <!-- <div class="card">
                         <div class="card-header" id="headingSix">
                             <h5 class="mb-0">
                                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
@@ -111,28 +118,134 @@
                         </div>
                         <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionView">
                             <div class="card-body">
-                                <input type="text" id="category" class="form-control" required>
+                                <input type="text" id="add-category" class="form-control" required>
                                 <br>
                                 <button type="submit" id="add">Add</button> 
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
+                <div class="card">
+                        <div class="card-header" id="headingSix">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                    <i class="fa fa-plus"></i> Add a Category
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionView">
+                            <div class="card-body">
+                                <h4>Name</h4>
+                                <!-- <input type="text" class="form-control" required> -->
+                                <select id="add-category" name="sel0">
+                                        <option value"">Select Category</option>
+                                        <option value"1">Utilities</option>
+                                        <option value"2">Food</option>
+                                        <option value"3">Entertainment</option>
+                                        <option value"4">Medical/Insurance</option>
+                                        <option value"5">Travel</option>
+                                        <option value"6">Transportation</option>
+                                        <option value"7">Clothes</option>
+                                        <option value"8">Education</option>
+                                        <option value"9">Children</option>
+                                        <option value"10">Pet</option>
+                                        <option value"11">Self-caring</option>
+                                </select>
+                            
+                                <br>
+                                <h4>Amount</h4>
+                                <input type="number" id="add-number" class="form-control" required>
+                                <br>
+                                <button type="submit" id="add">Add</button> 
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
     </div>
 
-    <script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    //initial array of category 
+    // "Utilities", "Food/Groceries", "Entertainment", "Insurance/Medical"
+    // var categories = ["Utilities", "Food", "Entertainment", "Medical/Insurance", "Travel", "Transportation", "Clothes", "Education", "Children", "Pet", "Self-Caring"]; 
+    var categories = []; 
+    var amounts = [];
+    //functions for displaying category data
+    function renderButtons() {
+        //category name is empty
+        $("#headingOne").empty(); 
+        $("#number").empty(); 
+        
+        //amount for each category should be empty 
+        // $("#collapseOne").empty(); 
+
+        // looping through the array of category
+        for(var i=0; i<categories.length; i++) {
     
-    $(document).ready(function() {
-        $("#category").submit(function() {
-            $("#add").append("#accordionView");
-        })
-    })
+            //then dynamically generating button 
+            var card = $("<div>");
+            card.addClass("card"); 
+            
+            var a = $("<h5>");
+            //adding card class
+            a.addClass("mb-0");
+            //adding a data-attribute with a value of the category at index i
+            a.attr("data-name", categories[i]);
+            //providing the card text with a value of the category at index i
+            a.text(categories[i]);
+            //adding the card to the html
+            $("#headingOne").prepend(card); 
+            $("#headingOne").prepend(a); 
+        
+        }
+
+        for(var j=0; j<amounts.length; j++) {
+            //dynamically generating card body
+            var b = $("<div>");
+            b.addClass("card-body");
+            b.attr("data-name", amounts[j]);
+            b.text(amounts[j]);
+
+            $("#number").append(b); 
+            
+      
+        }
+
+    }; 
+
+
+    //this function handles events where one button is cliked 
+    $("#add").on("click", function(event) {
+        //event.preventDefault() prevents the form from trying to submit itself 
+        event.preventDefault(); 
+        //this line will grab the text from the input textbox 
+        var category = $("#add-category").val().trim();
+        //the cateogy from the textbox is then added to our catagories array 
+        categories.push(category); 
+        //calling renderCards which handles the processing categories 
+
+        var amount = $("#add-number").val().trim(); 
+        amounts.push(amount); 
+
+
+
+        renderButtons(); 
+
+    });
+
+    renderButtons(); 
+    
+    
+    //  $(document).ready(function() {
+    //      $("#category").submit(function() {
+    //          $("#add").append("#accordionView");
+    //      })
+    //  })
     
     </script>
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 
 </body>
 
