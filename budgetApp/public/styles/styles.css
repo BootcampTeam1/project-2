@@ -7,13 +7,11 @@
     border: none;
 }
 
-.row {
-    width: 100%; 
+.row { 
     font-family: 'Lobster', cursive;
     background-color: lightblue;
     padding-top: 2%;
     padding-bottom: 2%;
-
 }
 
 #titleView {
@@ -23,6 +21,11 @@
 
 #expenseView {
     text-align: center;
+}
+
+#dropdownMenuButton {
+    font-size: 36px;
+    margin-top: -2%;
 }
 
 #categoryView {
