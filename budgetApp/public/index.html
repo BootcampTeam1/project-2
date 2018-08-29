@@ -6,9 +6,9 @@
     <title>Budgeter</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="budgetApp/public/styles/styles.css">
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
@@ -20,7 +20,16 @@
                 <h1><i class="fa fa-bank"></i> Budgeter</h1>
             </div>
             <div class="col-sm-4" id="expenseView">
-                <h1>Expenses</h1>
+                    <div class="dropdown">
+                            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              August, 2018
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="#">Action</a>
+                              <a class="dropdown-item" href="#">Another action</a>
+                              <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                          </div>
             </div>
             <div class="col-sm-4" id="categoryView">
                 <h1><a href="category.html">Category View</h1></a>
@@ -35,7 +44,7 @@
     </div>
 
     <script>
-
+    
         new Chart(document.getElementById("budget-chart"), {
             type: 'doughnut',
             data: {
@@ -51,7 +60,7 @@
             options: {
                 response: true,
                 title: {
-                    text: "August 2018",
+                    text: "Expenses",
                     display: true,
                     fontSize: 26,
                     fontFamily: "Lobster",
@@ -71,6 +80,7 @@
                 },
                 tooltips: {
                     callbacks: {
+                        // function converting expenses into percentages/month.
                         label: function (tooltipItem, data) {
                             var dataset = data.datasets[tooltipItem.datasetIndex];
                             var meta = dataset._meta[Object.keys(dataset._meta)[0]];
@@ -86,6 +96,7 @@
                 },
             }
         });
+
     </script>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
