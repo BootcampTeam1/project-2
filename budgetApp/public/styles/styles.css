@@ -1,3 +1,64 @@
 .list-group-item {
-  line-height: 2.5;
+    line-height: 2.5;
 }
+
+#dropdownMenuButton {
+    background-color: lightblue;
+    border: none;
+}
+
+.row { 
+    font-family: 'Lobster', cursive;
+    background-color: lightblue;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+#titleView {
+    text-align: left;
+    padding-left: 3%;
+}
+
+#expenseView {
+    text-align: center;
+}
+
+#dropdownMenuButton {
+    font-size: 36px;
+    margin-top: -2%;
+}
+
+#categoryView {
+    text-align: right;
+    padding-right: 3%;
+    color: black;
+}
+
+a {
+    color: black;
+}
+
+.row2 {
+    font-family: "Lobster", cursive;
+}
+
+.card {
+    margin: 0 auto; 
+    float: none;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.btn {
+    font-size: 30px;
+    color: black;
+}
+
+#accordionView {
+    width: 20rem;
+    margin: 0 auto;
+    float: none;
+    margin-bottom: 10px;
+}
+
+
