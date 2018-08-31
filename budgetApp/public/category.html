@@ -1,52 +1,20 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <title>Budgeter</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
-<<<<<<< HEAD:category.html
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-    <!-- <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
-    <link rel="stylesheet" type="text/css" href="budgetApp/public/styles/styles.css">
-
-
-=======
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="styles/styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
->>>>>>> 6f3788d2fba3a5c5af710a95d4dd322c9bebb2b4:budgetApp/public/category.html
 </head>
 
 <body>
-        <div class="left">
-                <div class="item">
-                    <i class="fas fa-fw fa-bars"></i>
-                </div>
-                <div class="item active">
-                    <i class="fas fa-fw fa-map-marked-alt"></i> Map
-                </div>
-                <div class="item">
-                    <i class="fas fa-fw fa-columns"></i> Split
-                </div>
-                <div class="item">
-                    <i class="fas fa-fw fa-th"></i> Grid
-                </div>
-                <div class="item">
-                    <i class="fas fa-fw fa-user-circle"></i> Dash
-                </div>
-            </div>
-
     <div id="container">
-            
         <div class="row">
-
             <div class="col-sm-4" id="titleView">
                 <h1><i class="fa fa-bank"></i> Budgeter</h1>
             </div>
@@ -71,26 +39,10 @@
                                 </button>
                             </h5>
                         </div>
-<<<<<<< HEAD:category.html
-
-=======
->>>>>>> 6f3788d2fba3a5c5af710a95d4dd322c9bebb2b4:budgetApp/public/category.html
                         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionView">
                             <div class="card-body">
                                 $1,250
                             </div>
-<<<<<<< HEAD:category.html
-                        </div>
-                    </div>
-
-                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionView">
-                            <div id= "number" class="card-body">
-                                $1,250
-                            </div>
-                        </div>
-
-                <div class="card">
-=======
                         </div>
                     </div>
                     <div class="card">
@@ -150,7 +102,6 @@
                         </div>
                     </div>
                     <div class="card">
->>>>>>> 6f3788d2fba3a5c5af710a95d4dd322c9bebb2b4:budgetApp/public/category.html
                         <div class="card-header" id="headingSix">
                             <h5 class="mb-0">
                                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
@@ -170,84 +121,7 @@
             </div>
         </div>
     </div>
-</div>
 
-<<<<<<< HEAD:category.html
-    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-    //initial array of category 
-    // "Utilities", "Food/Groceries", "Entertainment", "Insurance/Medical"
-    // var categories = ["Utilities", "Food", "Entertainment", "Medical/Insurance", "Travel", "Transportation", "Clothes", "Education", "Children", "Pet", "Self-Caring"]; 
-    var categories = []; 
-    var amounts = [];
-    //functions for displaying category data
-    function renderButtons() {
-        //category name is empty
-        $("#headingOne").empty(); 
-        $("#number").empty(); 
-        
-        //amount for each category should be empty 
-        // $("#collapseOne").empty(); 
-
-        // looping through the array of category
-        for(var i=0; i<categories.length; i++) {
-    
-            //then dynamically generating button 
-            var card = $("<div>");
-            card.addClass("card"); 
-            
-            var a = $("<h5>");
-            //adding card class
-            a.addClass("mb-0");
-            //adding a data-attribute with a value of the category at index i
-            a.attr("data-name", categories[i]);
-            //providing the card text with a value of the category at index i
-            a.text(categories[i]);
-            //adding the card to the html
-            $("#headingOne").prepend(card); 
-            $("#headingOne").prepend(a); 
-        
-        }
-
-        for(var j=0; j<amounts.length; j++) {
-            //dynamically generating card body
-            var b = $("<div>");
-            b.addClass("card-body");
-            b.attr("data-name", amounts[j]);
-            b.text(amounts[j]);
-
-            $("#number").append(b); 
-            
-      
-        }
-
-    }; 
-
-
-    //this function handles events where one button is cliked 
-    $("#add").on("click", function(event) {
-        //event.preventDefault() prevents the form from trying to submit itself 
-        event.preventDefault(); 
-        //this line will grab the text from the input textbox 
-        var category = $("#add-category").val().trim();
-        //the cateogy from the textbox is then added to our catagories array 
-        categories.push(category); 
-        //calling renderCards which handles the processing categories 
-
-        var amount = $("#add-number").val().trim(); 
-        amounts.push(amount); 
-
-
-
-        renderButtons(); 
-
-    });
-
-    renderButtons(); 
-=======
     <script>
     
     $(document).ready(function() {
@@ -255,7 +129,6 @@
             $("#add").append("#accordionView");
         })
     })
->>>>>>> 6f3788d2fba3a5c5af710a95d4dd322c9bebb2b4:budgetApp/public/category.html
     
     </script>
 
