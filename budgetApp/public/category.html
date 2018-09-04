@@ -145,6 +145,7 @@
             a.text(categories[i]);
             //adding the card to the html
             newCard.find(".card-header").text(categories[i]); 
+            //adding number to html
             newCard.find(".card-body").text(amounts[i]);
             
             // newCard.append(a);
@@ -154,20 +155,7 @@
              
         
         }
-        // for(var j=0; j<amounts.length; j++) {
-        //     //dynamically generating card body
-        //     var b = $("<div>");
-        //     b.addClass("card-body");
-        //     b.attr("data-name", amounts[j]);
-        //     // b.text(amounts[j]);
-        //     console.log(b);
 
-            
-        //     // $("#accordionView").append(b); 
-        //     // $("#number").append(b); 
-            
-      
-        // }
     }; 
     //this function handles events where one button is cliked 
     $("#add").on("click", function(event) {
@@ -188,13 +176,6 @@
 
     }; 
      
-    
-    
-    //  $(document).ready(function() {
-    //      $("#category").submit(function() {
-    //          $("#add").append("#accordionView");
-    //      })
-    //  })
     
     </script>
 </body>
