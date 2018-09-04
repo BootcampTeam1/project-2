@@ -1,8 +1,9 @@
 .left,
 .right {
-    top: 50%;
-    float: left;
-    transform: translateY(125%);
+    top: 15.8%; 
+    /* top: 50%; */
+    z-index: 999;
+
 }
 
 .left {
@@ -11,16 +12,17 @@
     white-space: nowrap;
     width: 50px;
     transition: width .5s;
+    position: fixed;
 }
 
-.right {
+/* .right {
     background: #fff;
     width: 350px;
     transition: width 1s;
     border-style: solid;
     border-color: #ccc;
     border-width: 1px;
-}
+} */
 
 .left:hover {
     width: 250px;
@@ -111,4 +113,11 @@ a {
     margin-bottom: 10px;
 }
 
+#main {
+    width: 20rem;
+    margin: 0 auto;
+    float: none;
+    margin-bottom: 10px;    
+
+}
 
