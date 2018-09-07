@@ -42,7 +42,8 @@
         <div class="row2">
             <div class="col-md" style="text-align:center; padding-top: 2%;">
                 <h3><strong>August, 2018</strong></h3>
-                <h2><strong>$3,515</strong></h2>
+                <!-- need to be updated based on category -->
+                <h2 id="sum">$3,515</h2>
                 <div class="accordion" id="accordionView">
                     <div class="card" id="card0">
                         <div class="card-header" id="heading1">
@@ -124,6 +125,7 @@
         //amount for each category should be empty 
         // $("#collapseOne").empty(); 
         // looping through the array of category
+        var sum = 0; 
         for(var i=0; i<categories.length; i++) {
             // cardCounter++;
             
@@ -147,6 +149,7 @@
             newCard.find(".card-header").text(categories[i]); 
             //adding number to html
             newCard.find(".card-body").text(amounts[i]);
+            sum += amounts[i];
             
             // newCard.append(a);
             $("#accordionView").prepend(newCard);
@@ -155,6 +158,9 @@
              
         
         }
+        $("#sum").text("$" + sum); 
+
+
 
     }; 
     //this function handles events where one button is cliked 
@@ -166,7 +172,7 @@
         //the cateogy from the textbox is then added to our catagories array 
         categories.push(category); 
         //calling renderCards which handles the processing categories 
-        var amount = $("#add-number").val().trim(); 
+        var amount = Number($("#add-number").val().trim()); 
         amounts.push(amount); 
         renderButtons(); 
     });
