@@ -148,7 +148,7 @@
             //adding the card to the html
             newCard.find(".card-header").text(categories[i]); 
             //adding number to html
-            newCard.find(".card-body").text(amounts[i]);
+            newCard.find(".card-body").text("$" + amounts[i]);
             sum += amounts[i];
             
             // newCard.append(a);
@@ -159,6 +159,7 @@
         
         }
         $("#sum").text("$" + sum); 
+        $("#amounts").text("$" + amounts);
 
 
 
